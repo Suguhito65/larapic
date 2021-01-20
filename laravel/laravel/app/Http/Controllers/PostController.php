@@ -40,6 +40,8 @@ class PostController extends Controller
     public function store(Request $request)
     {
         $id = Auth::id();
+        // インスタンス作成
+        $post = new Post();
 
         $post->body = $request->body;
         $post->user_id = $id;
