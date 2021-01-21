@@ -73,10 +73,8 @@ class PostController extends Controller
      */
     public function edit($id)
     {
-        // $usr_id = $post->user_id;
         $post = Post::findOrFail($id);
-
-        return view('posts.edit', ['post' => $post]);
+        return view('posts.edit', ['post' => $post, 'id' => $id]);
     }
 
     /**
@@ -89,10 +87,8 @@ class PostController extends Controller
     public function update(Request $request)
     {
         $id = $request->post_id;
-        
         //レコードを検索
         $post = Post::findOrFail($id);
-        
         $post->body = $request->body;
         
         //保存（更新）
