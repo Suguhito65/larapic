@@ -6,7 +6,7 @@
         <div class="row">
             <!-- メイン -->
             <div class="col-10 col-md-8 offset-1 offset-md-2">
-                <table class="table">
+                <table class="table table-striped">
                     <tbody>
                         <tr>
                             <th>ID</th>
@@ -23,7 +23,7 @@
                                     @auth
                                         <form action="/posts/delete/{{$post->id}}" method="POST">
                                             {{ csrf_field() }}
-                                            <input type="submit" value="削除" class="btn btn-danger post_del_btn">
+                                            <td><input type="submit" value="削除" class="btn btn-danger"></td>
                                         </form>
                                     @endauth
 
