@@ -10,6 +10,9 @@
                 <div class="form-group">
                     <label for="exampleFormControlTextarea1">新規投稿</label>
                     <textarea class="form-control" name="body" id="exampleFormControlTextarea1" rows="3"></textarea>
+                    @if ($errors->has('body'))
+                        <div class="text-danger">{{ $errors->first('body') }}</div>
+                    @endif
                     <div class="text-center mt-3">
                         <input class="btn btn-primary" type="submit" value="投稿する">
                         <input type="hidden" name="_token" value="{{csrf_token()}}">

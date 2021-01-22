@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use App\Http\Requests\PostRequest;
 
 class PostController extends Controller
 {
@@ -37,7 +38,7 @@ class PostController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(PostRequest $request)
     {
         $id = Auth::id();
         // インスタンス作成
@@ -47,6 +48,8 @@ class PostController extends Controller
         $post->user_id = $id;
 
         $post->save();
+
+        \Session::flash('err_msg', '登録しました。');
 
         return redirect()->to('/posts');
     }
@@ -84,7 +87,7 @@ class PostController extends Controller
      * @param  \App\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request)
+    public function update(PostRequest $request)
     {
         $id = $request->post_id;
         //レコードを検索
@@ -93,6 +96,8 @@ class PostController extends Controller
         
         //保存（更新）
         $post->save();
+
+        \Session::flash('err_msg', '更新しました。');
         
         return redirect()->to('/posts');
     }
@@ -108,6 +113,8 @@ class PostController extends Controller
         $post = Post::find($id);
         // 削除
         $post->delete();
+
+        \Session::flash('err_msg', '削除しました。');
 
         return redirect()->to('/posts');
     }

@@ -11,6 +11,9 @@
                     <div class="card-body">
                         <p class="card-text">
                             <textarea class="form-control" name="body" id="exampleFormControlTextarea1" rows="3">{{$post->body}}</textarea>
+                            @if ($errors->has('body'))
+                                <div class="text-danger">{{ $errors->first('body') }}</div>
+                            @endif
                         </p>
                         <div class="text-center mt-3">
                             <input name="post_id" type="hidden" value="{{$id}}" >

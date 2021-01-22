@@ -6,6 +6,11 @@
         <div class="row">
             <!-- メイン -->
             <div class="col-10 col-md-8 offset-1 offset-md-2">
+                @if (session('err_msg'))
+                    <p class="text-danger">
+                        {{ session('err_msg') }}
+                    </p>
+                @endif
                 <table class="table table-striped">
                     <tbody>
                         <tr>
@@ -23,7 +28,7 @@
                                     @auth
                                         <form action="/posts/delete/{{$post->id}}" method="POST">
                                             {{ csrf_field() }}
-                                            <td><input type="submit" value="削除" class="btn btn-danger"></td>
+                                            <input type="submit" value="削除" class="btn btn-danger">
                                         </form>
                                     @endauth
 
