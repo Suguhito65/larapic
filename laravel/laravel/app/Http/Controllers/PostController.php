@@ -51,7 +51,7 @@ class PostController extends Controller
 
         \Session::flash('err_msg', '登録しました。');
 
-        return redirect()->to('/posts');
+        return redirect()->to('/');
     }
 
     /**
@@ -62,8 +62,8 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        $usr_id = $post->user_id;
-        $user = DB::table('users')->where('id', $usr_id)->first();
+        $user_id = $post->user_id;
+        $user = DB::table('users')->where('id', $user_id)->first();
 
         return view('posts.detail', ['post' => $post, 'user' => $user]);
     }
@@ -99,7 +99,7 @@ class PostController extends Controller
 
         \Session::flash('err_msg', '更新しました。');
         
-        return redirect()->to('/posts');
+        return redirect()->to('/');
     }
 
     /**
@@ -116,6 +116,6 @@ class PostController extends Controller
 
         \Session::flash('err_msg', '削除しました。');
 
-        return redirect()->to('/posts');
+        return redirect()->to('/');
     }
 }

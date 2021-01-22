@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'edit page')
+@section('title', '編集ページ')
 @section('content')
     <div class="row">
         <!-- メイン -->
