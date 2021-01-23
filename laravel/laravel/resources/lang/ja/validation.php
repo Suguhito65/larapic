@@ -146,6 +146,7 @@ return [
     */
 
     'attributes' => [
+        'password' => 'パスワード',
         'body' => 'メッセージ',
     ],
 
