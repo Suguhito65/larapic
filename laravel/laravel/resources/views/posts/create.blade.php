@@ -5,7 +5,7 @@
     <div class="row">
         <!-- メイン -->
         <div class="col-10 col-md-6 offset-1 offset-md-3">
-            <form action="/posts" method="post">
+            <form action="/posts" method="post" enctype="multipart/form-data">
                 {{ csrf_field() }}
                 <div class="form-group">
                     <label for="exampleFormControlTextarea1">新規投稿</label>
@@ -13,6 +13,7 @@
                     @if ($errors->has('body'))
                         <div class="text-danger">{{ $errors->first('body') }}</div>
                     @endif
+                    <input type="file" name="image_url">
                     <div class="text-center mt-3">
                         <input class="btn btn-primary" type="submit" value="投稿する">
                         <input type="hidden" name="_token" value="{{csrf_token()}}">

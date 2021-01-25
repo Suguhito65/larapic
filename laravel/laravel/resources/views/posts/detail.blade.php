@@ -13,6 +13,9 @@
                     <div class="card-body">
                         <p class="card-text">{{ $post->body }}</p>
                         <div class="card-footer bg-transparent"><span class="font-weight-bold">by:</span> {{ $user->name }}</div>
+                        @if ($image_url)
+                            <p><img src="/{{ $image_url }}" width="300px" height="300px"></p>
+                        @endif
                         @auth
                             <a href="{{ url('posts/edit/'.$post->id) }}" class="btn btn-dark">編集する</a>
                         @endauth

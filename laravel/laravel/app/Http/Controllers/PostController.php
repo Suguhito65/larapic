@@ -45,6 +45,8 @@ class PostController extends Controller
         $post = new Post();
 
         $post->body = $request->body;
+        $time = date("Ymdhis");
+        $post->image_url = $request->image_url->storeAs('public/post_images', $time.'_'.Auth::user()->id. '.jpg');
         $post->user_id = $id;
 
         $post->save();
@@ -65,7 +67,11 @@ class PostController extends Controller
         $user_id = $post->user_id;
         $user = DB::table('users')->where('id', $user_id)->first();
 
-        return view('posts.detail', ['post' => $post, 'user' => $user]);
+        return view('posts.detail', [
+            'post' => $post,
+            'user' => $user,
+            'image_url' => str_replace('public/', 'storage/', $post->image_url)
+        ]);
     }
 
     /**
