@@ -22,7 +22,6 @@
                             <tr>
                                 <td>{{ $post->id }}</td>
                                 <td>{{ $post->body }}</td>
-                                
                                 <td>
                                     <a href="{{ url('posts/'.$post->id) }}" class="btn btn-success">詳細</a>
                                     @auth

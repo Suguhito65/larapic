@@ -148,6 +148,7 @@ return [
     'attributes' => [
         'password' => 'パスワード',
         'body' => 'メッセージ',
+        'image_url' => 'イメージ',
     ],
 
 ];
