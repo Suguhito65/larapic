@@ -12,19 +12,21 @@
                     </div>
                     <div class="card-body">
                         <p class="card-text">{{ $post->body }}</p>
-                        <div class="card-footer bg-transparent"><span class="font-weight-bold">by:</span> {{ $user->name }}</div>
+                        <div class="text-right card-footer bg-transparent"><span class="font-weight-bold">by</span> {{ $user->name }}</div>
                         @if ($image_url)
                             <p><img src="/{{ $image_url }}" width="300px" height="300px"></p>
                         @endif
                         <div>
                             @if($post->is_liked_by_auth_user())
-                                <a href="{{ route('post.unlike', ['id' => $post->id]) }}" class="btn btn-success btn-sm">いいね<span class="badge">{{ $post->likes->count() }}</span></a>
+                                <a href="{{ route('post.unlike', ['id' => $post->id]) }}" class="btn btn-primary btn-sm">いいね<span class="badge">{{ $post->likes->count() }}</span></a>
                             @else
                                 <a href="{{ route('post.like', ['id' => $post->id]) }}" class="btn btn-secondary btn-sm">いいね<span class="badge">{{ $post->likes->count() }}</span></a>
                             @endif
                         </div>
                         @auth
-                            <a href="{{ url('posts/edit/'.$post->id) }}" class="btn btn-dark">編集する</a>
+                            <div class="text-center">
+                                <a href="{{ url('posts/edit/'.$post->id) }}" class="btn btn-dark">編集する</a>
+                            </div>
                         @endauth
                     </div>
                 </div>

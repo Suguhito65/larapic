@@ -23,7 +23,7 @@
                         </p>
                         <div class="text-center mt-3">
                             <input name="post_id" type="hidden" value="{{$id}}" >
-                            <input class="btn btn-primary" type="submit" value="変更する">
+                            <input class="btn btn-dark" type="submit" value="変更する">
                             <input type="hidden" name="_token" value="{{csrf_token()}}">
                         </div>
                     </div>

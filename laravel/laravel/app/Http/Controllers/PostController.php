@@ -154,8 +154,6 @@ class PostController extends Controller
         'user_id' => Auth::id(),
         ]);
 
-        session()->flash('success', 'You Liked the Reply.');
-
         return redirect()->back();
     }
 
@@ -170,9 +168,6 @@ class PostController extends Controller
         $like = Like::where('post_id', $id)->where('user_id', Auth::id())->first();
         $like->delete();
 
-        session()->flash('success', 'You Unliked the Reply.');
-
         return redirect()->back();
     }
-
 }
