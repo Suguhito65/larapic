@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage; //画像編集の際に使用
 use App\Http\Requests\PostRequest;
 
 class PostController extends Controller
@@ -45,8 +46,8 @@ class PostController extends Controller
         $post = new Post();
 
         $post->body = $request->body;
-        $time = date("Ymdhis");
-        $post->image_url = $request->image_url->storeAs('public/post_images', $time.'_'.Auth::user()->id. '.jpg');
+        $time = date("Ymdhis"); // 2020(年)01(月)01(日)01(時)01(分)01(秒)
+        $post->image_url = $request->image_url->storeAs('public/post_images', $time.'_'.Auth::user()->id. '.jpg'); // 20200101010101_1.jpg
         $post->user_id = $id;
 
         $post->save();
@@ -99,6 +100,13 @@ class PostController extends Controller
         //レコードを検索
         $post = Post::findOrFail($id);
         $post->body = $request->body;
+
+        if($request->hasFile('image_url'))
+        {
+            Storage::delete('public/post_images/' . $post->image_url);
+            $time = date("Ymdhis");
+            $post->image_url = $request->image_url->storeAs('public/post_images', $time.'_'.Auth::user()->id. '.jpg'); 
+        }
         
         //保存（更新）
         $post->save();
