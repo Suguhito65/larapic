@@ -26,3 +26,5 @@ Route::resource('posts', 'PostController', ['only' => ['show', 'create', 'store'
 Route::get('posts/edit/{id}', 'PostController@edit');
 Route::post('posts/edit', 'PostController@update');
 Route::post('posts/delete/{id}', 'PostController@destroy');
+Route::get('posts/like/{id}', 'PostController@like')->name('post.like');
+Route::get('posts/unlike/{id}', 'PostController@unlike')->name('post.unlike');

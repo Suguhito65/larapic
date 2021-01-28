@@ -8,10 +8,17 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage; //画像編集の際に使用
+use App\Like;
 use App\Http\Requests\PostRequest;
 
 class PostController extends Controller
 {
+    // only()の引数内のメソッドはログイン時のみ有効
+    public function __construct()
+    {
+        $this->middleware(['auth', 'verified'])->only(['like', 'unlike']);
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -103,7 +110,7 @@ class PostController extends Controller
 
         if($request->hasFile('image_url'))
         {
-            Storage::delete('public/post_images/' . $post->image_url);
+            Storage::delete('public/post_images/' . $post->image_url); // 画像削除
             $time = date("Ymdhis");
             $post->image_url = $request->image_url->storeAs('public/post_images', $time.'_'.Auth::user()->id. '.jpg'); 
         }
@@ -132,4 +139,40 @@ class PostController extends Controller
 
         return redirect()->to('/');
     }
+
+
+    /**
+     * 引数のIDに紐づくリプライにLIKEする
+     *
+     * @param $id リプライID
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function like($id)
+    {
+        Like::create([
+        'post_id' => $id,
+        'user_id' => Auth::id(),
+        ]);
+
+        session()->flash('success', 'You Liked the Reply.');
+
+        return redirect()->back();
+    }
+
+    /**
+     * 引数のIDに紐づくリプライにUNLIKEする
+     *
+     * @param $id リプライID
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function unlike($id)
+    {
+        $like = Like::where('post_id', $id)->where('user_id', Auth::id())->first();
+        $like->delete();
+
+        session()->flash('success', 'You Unliked the Reply.');
+
+        return redirect()->back();
+    }
+
 }

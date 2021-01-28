@@ -23,6 +23,13 @@
                                 <td>{{ $post->id }}</td>
                                 <td>{{ $post->body }}</td>
                                 <td>
+                                    @if($post->is_liked_by_auth_user())
+                                        <a href="{{ route('post.unlike', ['id' => $post->id]) }}" class="btn btn-success btn-sm">いいね<span class="badge">{{ $post->likes->count() }}</span></a>
+                                    @else
+                                        <a href="{{ route('post.like', ['id' => $post->id]) }}" class="btn btn-secondary btn-sm">いいね<span class="badge">{{ $post->likes->count() }}</span></a>
+                                    @endif
+                                </td>
+                                <td>
                                     <a href="{{ url('posts/'.$post->id) }}" class="btn btn-success">詳細</a>
                                     @auth
                                         <form action="/posts/delete/{{$post->id}}" method="POST">
