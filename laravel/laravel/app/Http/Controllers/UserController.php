@@ -57,7 +57,8 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        //
+        $this->authorize('edit', $user);
+         return view('users.edit', ['user' => $user]);
     }
 
     /**
@@ -67,9 +68,10 @@ class UserController extends Controller
      * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, User $user)
+    public function update(Request $request)
     {
-        //
+        $this->authorize('edit', $user);
+         return view('users.edit', ['user' => $user]);
     }
 
     /**
@@ -80,6 +82,7 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
-        //
+        $this->authorize('edit', $user);
+         return view('users.edit', ['user' => $user]);
     }
 }

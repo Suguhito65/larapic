@@ -31,12 +31,12 @@
                                 </td>
                                 <td>
                                     <a href="{{ url('posts/'.$post->id) }}" class="btn btn-success">詳細</a>
-                                    @auth
+                                    @can('edit', $post)
                                         <form action="/posts/delete/{{$post->id}}" method="POST">
                                             {{ csrf_field() }}
                                             <input type="submit" value="削除" class="btn btn-danger">
                                         </form>
-                                    @endauth
+                                    @endcan
 
                                     <!-- @guest
                                         ログインしてません

@@ -23,11 +23,11 @@
                                 <a href="{{ route('post.like', ['id' => $post->id]) }}" class="btn btn-secondary btn-sm">いいね<span class="badge">{{ $post->likes->count() }}</span></a>
                             @endif
                         </div>
-                        @auth
+                        @can('edit', $post)
                             <div class="text-center">
                                 <a href="{{ url('posts/edit/'.$post->id) }}" class="btn btn-dark">編集する</a>
                             </div>
-                        @endauth
+                        @endcan
                     </div>
                 </div>
             </div>
