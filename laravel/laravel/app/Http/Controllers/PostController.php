@@ -78,7 +78,7 @@ class PostController extends Controller
         return view('posts.detail', [
             'post' => $post,
             'user' => $user,
-            'image_url' => str_replace('public/', 'storage/', $post->image_url)
+            'image_url' => str_replace('public/', 'storage/', $post->image_url) // 画像表示
         ]);
     }
 
@@ -91,7 +91,7 @@ class PostController extends Controller
     public function edit($id)
     {
         $post = Post::findOrFail($id);
-        $this->authorize('edit', $post);
+        $this->authorize('edit', $post); // 認可
         return view('posts.edit', ['post' => $post, 'id' => $id]);
     }
 
@@ -107,7 +107,7 @@ class PostController extends Controller
         $id = $request->post_id;
         //レコードを検索
         $post = Post::findOrFail($id);
-        $this->authorize('edit', $post);
+        $this->authorize('edit', $post); // 認可
         $post->body = $request->body;
 
         if($request->hasFile('image_url'))
@@ -133,9 +133,8 @@ class PostController extends Controller
     public function destroy($id)
     {
         $post = Post::find($id);
-        $this->authorize('edit', $post);
-        // 削除
-        $post->delete();
+        $this->authorize('edit', $post); // 認可
+        $post->delete(); // 削除
 
         \Session::flash('err_msg', '削除しました。');
 

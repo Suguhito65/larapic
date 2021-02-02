@@ -1,6 +1,5 @@
 @extends('layouts.app')
 @section('title', 'トップページ')
-
 @section('content')
     <div class="container">
         <div class="row">
@@ -37,10 +36,6 @@
                                             <input type="submit" value="削除" class="btn btn-danger">
                                         </form>
                                     @endcan
-
-                                    <!-- @guest
-                                        ログインしてません
-                                    @endguest -->
                                 </td>
                             </tr>
                         @endforeach

@@ -1,5 +1,4 @@
 @extends('layouts.app')
-
 @section('title', '編集ページ')
 @section('content')
     <div class="row">

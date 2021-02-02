@@ -1,6 +1,5 @@
 @extends('layouts.app')
 @section('title', '詳細ページ')
-
 @section('content')
     <div class="container">
         <div class="row">

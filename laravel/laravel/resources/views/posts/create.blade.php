@@ -1,6 +1,5 @@
 @extends('layouts.app')
 @section('title', '新規投稿ページ')
-
 @section('content')
     <div class="row">
         <!-- メイン -->
