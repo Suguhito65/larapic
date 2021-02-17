@@ -1,6 +1,6 @@
 # データベース設計
 
-![](https://i.gyazo.com/1af486c1bbd2166e41b6fe7e80908e01.png)
+![](https://i.gyazo.com/dee427a45814795918c37aa4e2621a0f.png)
 
 # テーブル設計
 
