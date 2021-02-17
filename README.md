@@ -8,7 +8,7 @@
 
 | Column    | Type      | Options        |
 | --------- | --------- | -------------- |
-| id        | int       | auto_increment |
+| id        | INT       | auto_increment |
 | name      | VARCHAR   |                |
 | email     | VARCHAR   |                |
 | password  | VARCHAR   |                |
@@ -19,8 +19,8 @@
 
 | Column    | Type      | Options        |
 | --------- | --------- | -------------- |
-| id        | int       | auto_increment |
-| user_id   | int       |                |
+| id        | INT       | auto_increment |
+| user_id   | INT       |                |
 | body      | VARCHAR   |                |
 | create_at | TIMESTAMP |                |
 | update_at | TIMESTAMP |                |
@@ -29,5 +29,5 @@
 
 | Column    | Type      | Options |
 | --------- | --------- | ------- |
-| post_id   | int       |         |
-| user_id   | int       |         |
+| post_id   | INT       |         |
+| user_id   | INT       |         |
