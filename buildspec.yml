@@ -1,9 +1,9 @@
 version: 0.2
 
 phases:
-  install: 
-    runtime-versions:
-      php: 7.2
+ install: 
+   runtime-versions:
+     php: 7.2
  pre_build: # commands to be run before build
    commands:
    - echo Logging in to Amazon ECR....
