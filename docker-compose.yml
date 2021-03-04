@@ -29,12 +29,12 @@ services:
     ports:
       - 3306:3306
     environment:
-      - MYSQL_DATABASE: development
-      - MYSQL_ROOT_USER: root
-      - MYSQL_ROOT_PASSWORD: root
-      - MYSQL_USER: root
-      - MYSQL_PASSWORD: root
-      - TZ: 'Asia/Tokyo'
+      MYSQL_DATABASE: development
+      MYSQL_ROOT_USER: root
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_USER: root
+      MYSQL_PASSWORD: root
+      TZ: 'Asia/Tokyo'
       
     volumes:
       - ./docker-config/mysql/data:/var/lib/mysql
