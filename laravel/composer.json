@@ -14,7 +14,8 @@
         "guzzlehttp/guzzle": "^6.3.1|^7.0.1",
         "laravel/framework": "^7.29",
         "laravel/tinker": "^2.5",
-        "laravel/ui": "^2.5"
+        "laravel/ui": "^2.5",
+        "league/flysystem-aws-s3-v3": "^1.0"
     },
     "require-dev": {
         "facade/ignition": "^2.0",
@@ -59,9 +60,6 @@
         ],
         "post-create-project-cmd": [
             "@php artisan key:generate --ansi"
-        ],
-        "compile": [
-            "@php -r \"file_exists('.env') || copy('.env.heroku', '.env');\""
         ]
     }
 }

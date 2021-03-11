@@ -13,7 +13,8 @@
                         <p class="card-text">{{ $post->body }}</p>
                         <div class="text-right card-footer bg-transparent"><span class="font-weight-bold">by</span> {{ $user->name }}</div>
                         @if ($image_url)
-                            <p class="text-center"><img src="/{{ $image_url }}" width="300px" height="300px"></p>
+                            <!-- （ローカル）<p class="text-center"><img src="/{{ $image_url }}" width="250vw" height="250vh"></p> -->
+                            <p class="text-center"><img src="https://larapic65.s3.ap-northeast-1.amazonaws.com/{{ $image_url }}" width="250vw" height="250vh"></p>
                         @endif
                         <div>
                             @if($post->is_liked_by_auth_user())
