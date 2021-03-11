@@ -8,7 +8,7 @@
 
 # 開発環境
 
-- PHP 7.2.34/Laravel 7.30.2/mySQL 8.0.23/Github/Github/Visual Studio Code/Heroku
+- PHP 7.2.34/Laravel 7.30.2/mySQL 8.0.23/Github/Github/Visual Studio Code/Heroku/AWS(S3)
 
 # 使用画面のイメージ
 
