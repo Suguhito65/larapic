@@ -9,6 +9,7 @@
     "license": "MIT",
     "require": {
         "php": "^7.2.5|^8.0",
+        "aws/aws-sdk-php": "^3.173",
         "fideloper/proxy": "^4.4",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^6.3.1|^7.0.1",
@@ -40,6 +41,7 @@
         },
         "classmap": [
             "database/seeds",
+            
             "database/factories"
         ]
     },
