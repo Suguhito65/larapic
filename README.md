@@ -10,6 +10,12 @@
 
 - PHP 7.2.34/Laravel 7.30.2/mySQL 8.0.23/Github/Github/Visual Studio Code/Heroku
 
+# 使用画面のイメージ
+
+![](https://i.gyazo.com/287297c3169e8c05a3ad287f7a9adcf9.png)
+
+![](https://i.gyazo.com/5fa23d8f610336f1d17709f56a0f264e.png)
+
 # データベース設計
 
 ![](https://i.gyazo.com/6c5a8456ef51d80982b7f8a6041fabc1.png)
