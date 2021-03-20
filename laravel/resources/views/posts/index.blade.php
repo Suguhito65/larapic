@@ -15,6 +15,7 @@
                         <tr>
                             <th>ID</th>
                             <th colspan="3">内容</th>
+                            <th></th>
                         </tr>
                         
                         @foreach ($posts as $post)
@@ -30,10 +31,12 @@
                                 </td>
                                 <td>
                                     <a href="{{ url('posts/'.$post->id) }}" class="btn btn-success">詳細</a>
+                                </td>
+                                <td>
                                     @can('edit', $post)
                                         <form action="/posts/delete/{{$post->id}}" method="POST">
                                             {{ csrf_field() }}
-                                            <input type="submit" value="削除" class="btn btn-danger">
+                                            <button type="submit" class="btn btn-danger">削除</button>
                                         </form>
                                     @endcan
                                 </td>
