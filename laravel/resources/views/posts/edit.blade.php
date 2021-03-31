@@ -4,6 +4,7 @@
     <div class="row">
         <!-- メイン -->
         <div class="col-10 col-md-6 offset-1 offset-md-3">
+        <label class="text-muted" for="exampleFormControlTextarea1">編集</label>
             <div class="card">
                 <form action="/posts/edit" method="post" enctype="multipart/form-data">
                     {{ csrf_field() }}
