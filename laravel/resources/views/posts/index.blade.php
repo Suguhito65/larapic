@@ -12,7 +12,7 @@
                 @endif
                 <table class="table table-striped">
                     <tbody>
-                        <tr>
+                        <tr class="bg-dark text-white">
                             <th>ID</th>
                             <th colspan="3">内容</th>
                             <th></th>

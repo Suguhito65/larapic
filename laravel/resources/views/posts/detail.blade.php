@@ -6,7 +6,7 @@
             <!-- メイン -->
             <div class="col-10 col-md-6 offset-1 offset-md-3">
                 <div class="card">
-                    <div class="card-header">
+                    <div class="card-header bg-dark text-white">
                     {{ $post->id }}
                     </div>
                     <div class="card-body">
