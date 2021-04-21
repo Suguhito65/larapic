@@ -1,12 +1,12 @@
 <script>
   $(function(){
-  $(".post_del_btn").click(function(){
-  if(confirm("削除しますか？")){
-  //そのままsubmit（削除）
-  }else{
-  //cancel
-  return false;
-  }
-  });
+    $(".del_btn").click(function(){
+      if(confirm("本当に削除しますか？")){
+      // そのまま削除
+      }else{
+      // キャンセル
+      return false;
+      }
+    });
   });
 </script>

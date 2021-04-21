@@ -4,8 +4,8 @@
     <div class="row">
         <!-- メイン -->
         <div class="col-10 col-md-6 offset-1 offset-md-3">
-        <label class="text-muted" for="exampleFormControlTextarea1">編集</label>
             <div class="card">
+            <div class="card-header text-center bg-dark text-white" for="exampleFormControlTextarea1" style="font-size: 1.5em">編集</div>
                 <form action="/posts/edit" method="post" enctype="multipart/form-data">
                     {{ csrf_field() }}
                     <div class="card-body">
@@ -23,7 +23,7 @@
                         </p>
                         <div class="text-center mt-3">
                             <input name="post_id" type="hidden" value="{{$id}}" >
-                            <input class="btn btn-dark" type="submit" value="変更する">
+                            <input class="btn btn-success mt-3" style="width:100%" type="submit" value="変更する">
                             <input type="hidden" name="_token" value="{{csrf_token()}}">
                         </div>
                     </div>

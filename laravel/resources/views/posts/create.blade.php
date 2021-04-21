@@ -4,8 +4,8 @@
     <div class="row">
         <!-- メイン -->
         <div class="col-10 col-md-6 offset-1 offset-md-3">
-            <label class="text-muted" for="exampleFormControlTextarea1">新規投稿</label>
             <div class="card">
+            <div class="card-header text-center bg-dark text-white" for="exampleFormControlTextarea1" style="font-size: 1.5em">新規投稿</div>
                 <form action="/posts" method="post" enctype="multipart/form-data">
                     {{ csrf_field() }}
                     <div class="card-body">
@@ -22,7 +22,7 @@
                             @endif
                         </p>
                         <div class="text-center mt-3">
-                            <input class="btn btn-primary" type="submit" value="投稿する">
+                            <input class="btn btn-success mt-3" style="width:100%" type="submit" value="投稿する">
                             <input type="hidden" name="_token" value="{{csrf_token()}}">
                         </div>
                     </div>

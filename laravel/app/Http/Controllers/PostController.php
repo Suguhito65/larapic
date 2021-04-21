@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App;
 use App\Post;
 use Illuminate\Http\Request;
 
@@ -54,11 +55,11 @@ class PostController extends Controller
 
         $post->body = $request->body;
         // ローカル
-        // $time = date("Ymdhis"); // 2020(年)01(月)01(日)01(時)01(分)01(秒)
-        // $post->image_url = $request->image_url->storeAs('public/post_images', $time.'_'.Auth::user()->id. '.jpg'); // 20200101010101_1.jpg
-        $image = $request->file('image_url');
-        $path = Storage::disk('s3')->putFile('/', $image, 'public');
-        $post->image_url = $path;
+        $time = date("Ymdhis"); // 2020(年)01(月)01(日)01(時)01(分)01(秒)
+        $post->image_url = $request->image_url->storeAs('public/post_images', $time.'_'.Auth::user()->id. '.jpg'); // 20200101010101_1.jpg
+        // $image = $request->file('image_url');
+        // $path = Storage::disk('s3')->putFile('/', $image, 'public');
+        // $post->image_url = $path;
         $post->user_id = $id;
 
         $post->save();
@@ -81,8 +82,9 @@ class PostController extends Controller
         return view('posts.detail', [
             'post' => $post,
             'user' => $user,
-            // 'image_url' => str_replace('public/', 'storage/', $post->image_url) // 画像表示（ローカル）
-            'image_url' => $post->image_url
+            // ローカル
+            'image_url' => str_replace('public/', 'storage/', $post->image_url) // 画像表示（ローカル）
+            // 'image_url' => $post->image_url
         ]);
     }
 
@@ -116,13 +118,13 @@ class PostController extends Controller
 
         if($request->hasFile('image_url'))
         {
-            // Storage::delete('public/post_images/' . $post->image_url); // 画像削除
-            // $time = date("Ymdhis");
-            // $post->image_url = $request->image_url->storeAs('public/post_images', $time.'_'.Auth::user()->id. '.jpg');
-            $image = $request->image_url;
-            Storage::disk('s3')->delete($image);
-            $path = Storage::disk('s3')->putFile('/', $image, 'public');
-            $post->image_url = $path;
+            Storage::delete('public/post_images/' . $post->image_url); // 画像削除
+            $time = date("Ymdhis");
+            $post->image_url = $request->image_url->storeAs('public/post_images', $time.'_'.Auth::user()->id. '.jpg');
+            // $image = $request->image_url;
+            // Storage::disk('s3')->delete($image);
+            // $path = Storage::disk('s3')->putFile('/', $image, 'public');
+            // $post->image_url = $path;
         }
         
         $post->save();
