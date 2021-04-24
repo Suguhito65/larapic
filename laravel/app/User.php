@@ -2,9 +2,9 @@
 
 namespace App;
 
+use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
@@ -33,9 +33,9 @@ class User extends Authenticatable
      *
      * @var array
      */
-    protected $casts = [
-        'email_verified_at' => 'datetime',
-    ];
+    // protected $casts = [
+    //     'email_verified_at' => 'datetime',
+    // ];
 
     /**
      * 現在のユーザー、または引数で渡されたIDが管理者かどうかを返す
@@ -46,5 +46,9 @@ class User extends Authenticatable
     public function isAdmin($id = null) {
         $id = ($id) ? $id : $this->id;
         return $id == config('admin_id');
+    }
+
+    public function posts() {
+        return $this->hasMany(\App\Post::class, 'user_id', 'id');
     }
 }

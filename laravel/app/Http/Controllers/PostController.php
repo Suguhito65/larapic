@@ -4,13 +4,13 @@ namespace App\Http\Controllers;
 
 use App;
 use App\Post;
-use Illuminate\Http\Request;
-
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Storage; //画像編集の際に使用
 use App\Like;
+use Illuminate\Http\Request;
 use App\Http\Requests\PostRequest;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage; //画像編集の際に使用
+
+
 
 class PostController extends Controller
 {
@@ -77,11 +77,9 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        $user_id = $post->user_id;
-        $user = DB::table('users')->where('id', $user_id)->first();
-        return view('posts.detail', [
+        $post->load('user');
+        return view('posts.show', [
             'post' => $post,
-            'user' => $user,
             // ローカル
             'image_url' => str_replace('public/', 'storage/', $post->image_url) // 画像表示（ローカル）
             // 'image_url' => $post->image_url

@@ -24,13 +24,13 @@
                                 <td>{{ $post->body }}</td>
                                 <td>
                                     @if($post->is_liked_by_auth_user())
-                                        <a href="{{ route('post.unlike', ['id' => $post->id]) }}" class="btn btn-primary btn-sm">いいね<span class="badge">{{ $post->likes->count() }}</span></a>
+                                        <a href="{{ route('posts.unlike', ['id' => $post->id]) }}" class="btn btn-primary btn-sm">いいね<span class="badge">{{ $post->likes->count() }}</span></a>
                                     @else
-                                        <a href="{{ route('post.like', ['id' => $post->id]) }}" class="btn btn-secondary btn-sm">いいね<span class="badge">{{ $post->likes->count() }}</span></a>
+                                        <a href="{{ route('posts.like', ['id' => $post->id]) }}" class="btn btn-secondary btn-sm">いいね<span class="badge">{{ $post->likes->count() }}</span></a>
                                     @endif
                                 </td>
                                 <td>
-                                    <a href="{{ url('posts/'.$post->id) }}" class="btn btn-success">詳細</a>
+                                    <a href="{{ route('posts.show', ['post' => $post->id]) }}" class="btn btn-success">詳細</a>
                                 </td>
                                 <td>
                                     @can('edit', $post)
