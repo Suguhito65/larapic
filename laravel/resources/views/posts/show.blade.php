@@ -11,7 +11,11 @@
                     </div>
                     <div class="card-body">
                         <p class="card-text">{{ $post->body }}</p>
-                        <div class="text-right card-footer bg-transparent"><a href="{{ route('users.show', $post->user_id) }}" class="text-dark"><span class="font-weight-bold">by</span> {{ $post->user->name }}</a></div>
+                        <div class="text-right card-footer bg-transparent">
+                            <a href="{{ route('users.show', $post->user_id) }}" class="text-dark">
+                                <span class="font-weight-bold">by</span> {{ $post->user->name }}
+                            </a>
+                        </div>
                         @if ($image_url)
                             <!-- ローカル -->
                             <p class="text-center"><img class="img-fluid" src="/{{ $image_url }}"></p>
@@ -19,9 +23,13 @@
                         @endif
                         <div>
                             @if($post->is_liked_by_auth_user())
-                                <a href="{{ route('posts.unlike', ['id' => $post->id]) }}" class="btn btn-primary btn-sm">いいね<span class="badge">{{ $post->likes->count() }}</span></a>
+                                <a href="{{ route('posts.unlike', ['id' => $post->id]) }}" class="btn btn-primary btn-sm">
+                                    いいね<span class="badge">{{ $post->likes->count() }}</span>
+                                </a>
                             @else
-                                <a href="{{ route('posts.like', ['id' => $post->id]) }}" class="btn btn-secondary btn-sm">いいね<span class="badge">{{ $post->likes->count() }}</span></a>
+                                <a href="{{ route('posts.like', ['id' => $post->id]) }}" class="btn btn-secondary btn-sm">
+                                    いいね<span class="badge">{{ $post->likes->count() }}</span>
+                                </a>
                             @endif
                         </div>
                         @can('edit', $post)
@@ -29,6 +37,26 @@
                                 <a href="{{ url('posts/edit/'.$post->id) }}" class="btn btn-success">編集する</a>
                             </div>
                         @endcan
+                    </div>
+                    <div class="p-3">
+                        <div class="card-header text-center bg-dark text-white">コメント一覧</div>
+                        @foreach($post->comments as $comment)
+                            <div class="card mb-1">
+                                <div class="card-body">
+                                    <p class="card-text">{{ $comment->comment }}</p>
+                                    <div class="text-right">  
+                                        <a href="{{ route('users.show', $comment->user->id) }}" class="text-dark">
+                                            <span class="font-weight-bold">by</span> {{ $comment->user->name }}
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
+                        <div class="text-center mt-2">
+                            <a href="{{ route('comments.create', ['post_id' => $post->id]) }}" class="btn btn-success">
+                                コメント投稿
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>

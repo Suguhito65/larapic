@@ -149,6 +149,7 @@ return [
         'password' => 'パスワード',
         'body' => 'メッセージ',
         'image_url' => 'イメージ',
+        'comment' => 'コメント',
     ],
 
 ];
