@@ -2,6 +2,14 @@
 @section('title', 'ユーザーページ')
 @section('content')
   <div class="container">
+    <form action="{{ route('posts.search') }}" method="post" class="input-group mb-5" style="width: 60%; margin: 0 auto">
+      {{ csrf_field() }}
+      <input type="text" placeholder="search" name="search" value="" class="form-control">
+      <button type="submit" class="btn btn-outline-primary ml-1">
+        <i class="fas fa-search"></i>
+      </button>
+    </form>
+
     <div class="row">
       <div class="col-10 col-md-8 offset-1 offset-md-2">
         @if (session('err_msg'))

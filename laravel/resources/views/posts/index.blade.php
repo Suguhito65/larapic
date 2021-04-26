@@ -2,6 +2,18 @@
 @section('title', 'トップページ')
 @section('content')
     <div class="container">
+        <form action="{{ route('posts.search') }}" method="post" class="input-group mb-5" style="width: 60%; margin: 0 auto">
+            {{ csrf_field() }}
+            <input type="text" placeholder="search" name="search" value="" class="form-control">
+            <button type="submit" class="btn btn-outline-primary ml-1">
+                <i class="fas fa-search"></i>
+            </button>
+        </form>
+
+        @isset($seach_result)
+        <h2 class="text-center mb-3">{{ $search_result}}</h2>
+        @endisset
+        
         <div class="row">
             <!-- メイン -->
             <div class="col-10 col-md-8 offset-1 offset-md-2">
@@ -36,7 +48,7 @@
                                     @can('edit', $post)
                                         <form action="/posts/delete/{{$post->id}}" method="POST">
                                             {{ csrf_field() }}
-                                            <button type="submit" class="del_btn btn btn-danger">削除</button>
+                                            <button type="submit" class="btn btn-danger" id="delete">削除</button>
                                         </form>
                                     @endcan
                                 </td>

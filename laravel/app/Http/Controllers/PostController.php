@@ -29,6 +29,17 @@ class PostController extends Controller
     {
         $posts = Post::all();
         return view('posts.index', ['posts' => $posts]);
+
+        // $q = \Request::query();
+
+        // if(isset($q['user'])) {
+        //     $posts = Post::latest();
+        //     $posts->load('user');
+        //     return view('posts.index', [
+        //         'posts' => $posts,
+        //         'user' => $q['user']
+        //     ]);
+        // }
     }
 
     /**
@@ -77,7 +88,7 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        $post->load('user', 'comments.user');
+        $post->load('user', 'comments.user'); // コメントをしたユーザー情報を取得
         return view('posts.show', [
             'post' => $post,
             // ローカル
@@ -96,7 +107,10 @@ class PostController extends Controller
     {
         $post = Post::findOrFail($id);
         $this->authorize('edit', $post); // 認可
-        return view('posts.edit', ['post' => $post, 'id' => $id]);
+        return view('posts.edit', [
+            'post' => $post,
+            'id' => $id
+        ]);
     }
 
     /**
@@ -178,5 +192,15 @@ class PostController extends Controller
         $like->delete();
 
         return redirect()->back();
+    }
+
+    public function search(Request $request)
+    {
+        $posts = Post::where('body', 'like', "%{$request->search}%")->get();
+        $search_result = $request->search.'の検索結果'.count($posts).'件';
+        return view('posts.index', [
+            'posts' => $posts,
+            'search_result' => $search_result
+        ]);
     }
 }

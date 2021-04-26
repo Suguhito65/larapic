@@ -38,8 +38,10 @@
                             </div>
                         @endcan
                     </div>
-                    <div class="p-3">
-                        <div class="card-header text-center bg-dark text-white">コメント一覧</div>
+                </div>
+                <div class="card mt-3">
+                    <div class="card-header text-center bg-dark text-white">コメント一覧</div>
+                    <div class="p-2">
                         @foreach($post->comments as $comment)
                             <div class="card mb-1">
                                 <div class="card-body">
@@ -53,7 +55,7 @@
                             </div>
                         @endforeach
                         <div class="text-center mt-2">
-                            <a href="{{ route('comments.create', ['post_id' => $post->id]) }}" class="btn btn-success">
+                            <a href="{{ route('comments.create', ['post_id' => $post->id]) }}" class="btn btn-success mb-3">
                                 コメント投稿
                             </a>
                         </div>

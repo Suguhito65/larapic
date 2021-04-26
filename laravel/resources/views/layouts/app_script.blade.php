@@ -1,6 +1,6 @@
 <script>
   $(function(){
-    $(".del_btn").click(function(){
+    $("#delete").click(function(){
       if(confirm("本当に削除しますか？")){
       // そのまま削除
       }else{

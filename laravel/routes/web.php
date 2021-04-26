@@ -27,6 +27,8 @@ Route::prefix('posts')->name('posts.')->group(function () {
   // いいね
   Route::get('like/{id}', 'PostController@like')->name('like');
   Route::get('unlike/{id}', 'PostController@unlike')->name('unlike');
+  // 検索
+  Route::post('search', 'PostController@search')->name('search');
 });
 // コメント
 Route::resource('comments', 'CommentController')->middleware('auth');
