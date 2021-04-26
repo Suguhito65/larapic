@@ -27,19 +27,10 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::all();
+        // $posts = Post::all();
+        $posts = Post::paginate(5);
+
         return view('posts.index', ['posts' => $posts]);
-
-        // $q = \Request::query();
-
-        // if(isset($q['user'])) {
-        //     $posts = Post::latest();
-        //     $posts->load('user');
-        //     return view('posts.index', [
-        //         'posts' => $posts,
-        //         'user' => $q['user']
-        //     ]);
-        // }
     }
 
     /**
