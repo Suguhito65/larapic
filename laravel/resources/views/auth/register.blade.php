@@ -50,7 +50,7 @@
                             <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
                         </div>
 
-                        <button type="submit" class="btn btn-primary mt-4" style="width:100%">
+                        <button type="submit" class="btn btn-success mt-4" style="width:100%">
                             {{ __('新規登録') }}
                         </button>
                     </form>

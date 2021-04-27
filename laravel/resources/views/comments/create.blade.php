@@ -1,8 +1,8 @@
 @extends('layouts.app')
 @section('title', 'コメント投稿ページ')
 @section('content')
+<div class="container">
     <div class="row">
-        <!-- メイン -->
         <div class="col-10 col-md-6 offset-1 offset-md-3">
             <div class="card">
             <div class="card-header text-center bg-dark text-white" for="exampleFormControlTextarea1" style="font-size: 1.5em">コメント投稿</div>
@@ -25,4 +25,5 @@
             </div>
         </div>
     </div>
+</div>
 @endsection

@@ -34,14 +34,14 @@
                         </div>
                         @can('edit', $post)
                             <div class="text-center">
-                                <a href="{{ url('posts/edit/'.$post->id) }}" class="btn btn-success">編集する</a>
+                                <a href="{{ url('posts/edit/'.$post->id) }}" class="btn btn-success mt-3" style="width: 100%">編集する</a>
                             </div>
                         @endcan
                     </div>
                 </div>
                 <div class="card mt-3">
                     <div class="card-header text-center bg-dark text-white">コメント一覧</div>
-                    <div class="p-2">
+                    <div class="p-3">
                         @foreach($post->comments as $comment)
                             <div class="card mb-1">
                                 <div class="card-body">
@@ -54,8 +54,8 @@
                                 </div>
                             </div>
                         @endforeach
-                        <div class="text-center mt-2">
-                            <a href="{{ route('comments.create', ['post_id' => $post->id]) }}" class="btn btn-success mb-3">
+                        <div class="text-center mt-3">
+                            <a href="{{ route('comments.create', ['post_id' => $post->id]) }}" class="btn btn-success mb-1" style="width: 100%">
                                 コメント投稿
                             </a>
                         </div>

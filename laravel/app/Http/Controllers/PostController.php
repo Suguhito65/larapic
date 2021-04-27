@@ -27,9 +27,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        // $posts = Post::all();
-        $posts = Post::paginate(5);
-
+        $posts = Post::all();
         return view('posts.index', ['posts' => $posts]);
     }
 
@@ -154,7 +152,7 @@ class PostController extends Controller
         return redirect()->to('/');
     }
 
-
+    // いいね機能
     /**
      * 引数のIDに紐づくリプライにLIKEする
      *
@@ -170,7 +168,7 @@ class PostController extends Controller
 
         return redirect()->back();
     }
-
+    // いいねを外す
     /**
      * 引数のIDに紐づくリプライにUNLIKEする
      *
@@ -185,13 +183,15 @@ class PostController extends Controller
         return redirect()->back();
     }
 
+    // 検索機能
     public function search(Request $request)
     {
-        $posts = Post::where('body', 'like', "%{$request->search}%")->get();
+        $posts = Post::where('body', 'like', "%{$request->search}%")
+            ->get();
         $search_result = $request->search.'の検索結果'.count($posts).'件';
         return view('posts.index', [
             'posts' => $posts,
-            'search_result' => $search_result
+            'search_result' => $search_result,
         ]);
     }
 }

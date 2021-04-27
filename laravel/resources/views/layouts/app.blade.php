@@ -16,7 +16,7 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-info shadow-sm">
+        <nav class="navbar navbar-expand-md navbar-light bg-info shadow-sm sticky-top">
             <div class="container">
                 <a class="navbar-brand text-white" href="{{ url('/') }}" style="font-size: 2em">
                     {{ __('Larapic') }}

@@ -1,9 +1,9 @@
 @extends('layouts.app')
 @section('title', '新規投稿ページ')
 @section('content')
+<div class="container">
     <div class="row">
-        <!-- メイン -->
-        <div class="col-10 col-md-6 offset-1 offset-md-3">
+        <div class="col-md-6 offset-md-3">
             <div class="card">
             <div class="card-header text-center bg-dark text-white" for="exampleFormControlTextarea1" style="font-size: 1.5em">新規投稿</div>
                 <form action="/posts" method="post" enctype="multipart/form-data">
@@ -30,4 +30,5 @@
             </div>
         </div>
     </div>
+</div>
 @endsection
