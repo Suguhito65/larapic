@@ -23,6 +23,10 @@ class Post extends Model
         return $this->hasMany('App\Like', 'post_id', 'id');
     }
 
+    public function tags() {
+        return $this->belongsToMany('App\Tag')->withTimestamps();
+    }
+
     /**
      * リプライにLIKEを付いているかの判定
      *

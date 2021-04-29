@@ -8,7 +8,7 @@
 
 # 開発環境
 
-- PHP 7.2/Laravel 7.3/mySQL 8.0/Docker/Github/Visual Studio Code/Heroku/AWS(S3)
+- PHP 7.2/Laravel 7.3/jQuery/mySQL 8.0/Docker/Github/Visual Studio Code/Heroku/AWS(S3)
 
 # 使用画面のイメージ
 
@@ -40,12 +40,23 @@
 | id        | INT       | auto_increment |
 | user_id   | INT       |                |
 | body      | VARCHAR   |                |
+| image_url | VARCHAR   |                |
 | create_at | TIMESTAMP |                |
 | update_at | TIMESTAMP |                |
 
+## Comment テーブル
+
+| Column  | Type    | Options |
+| ------- | ------- | ------- |
+| id      | INT     |         |
+| comment | VARCHAR |         |
+| post_id | INT     |         |
+| user_id | INT     |         |
+
 ## Likes テーブル
 
-| Column    | Type      | Options |
-| --------- | --------- | ------- |
-| post_id   | INT       |         |
-| user_id   | INT       |         |
+| Column  | Type | Options |
+| ------- | ---- | ------- |
+| id      | INT  |         |
+| post_id | INT  |         |
+| user_id | INT  |         |

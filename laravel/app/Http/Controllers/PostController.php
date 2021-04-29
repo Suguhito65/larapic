@@ -2,15 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
+use App\Http\Requests\PostRequest;
+
 use App;
 use App\Post;
 use App\Like;
-use Illuminate\Http\Request;
-use App\Http\Requests\PostRequest;
+use App\Tag;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage; //画像編集の際に使用
-
-
 
 class PostController extends Controller
 {
@@ -27,8 +27,29 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::all();
-        return view('posts.index', ['posts' => $posts]);
+        // $posts = Post::all();
+        // return view('posts.index', [
+        //     'posts' => $posts
+        // ]);
+        $q = \Request::query();
+
+        if(isset($q['tag_name'])) {
+            $posts = Post::latest()->where('body', $q['tag_name'])->paginate(1);
+            $posts->load('user', 'tags');
+            dd($posts);
+
+            return view('posts.index', [
+                'posts' => $posts,
+                'tag_name' => $q['tag_name']
+            ]);
+        } else {
+            $posts = Post::latest()->paginate(3);
+            $posts->load('user', 'tags');
+
+            return view('posts.index', [
+                'posts' => $posts
+            ]);
+        }
     }
 
     /**
@@ -62,7 +83,24 @@ class PostController extends Controller
         // $post->image_url = $path;
         $post->user_id = $id;
 
+        // bodyからtagを抽出
+        preg_match_all('/#([a-zA-Z0-9０-９ぁ-んァ-ヶー一-龠]+)/u', $request->body, $match);
+
+        $tags = [];
+        foreach($match[1] as $tag) {
+            // すでに存在するtagは作られない
+            $found = Tag::firstOrCreate(['tag_name' => $tag]);
+
+            array_push($tags, $found);
+        }
+
+        $tag_ids = [];
+        foreach($tags as $tag) {
+            array_push($tag_ids, $tag['id']);
+        }
+
         $post->save();
+        $post->tags()->attach($tag_ids);
 
         \Session::flash('err_msg', '登録しました。');
 
@@ -187,12 +225,15 @@ class PostController extends Controller
     // 検索機能
     public function search(Request $request)
     {
-        $posts = Post::where('body', 'like', "%{$request->search}%")
-            ->get();
-        $search_result = $request->search.'の検索結果'.count($posts).'件';
+        $posts = Post::where('body', 'like', '%'.$request->search.'%')
+            ->paginate(3);
+
+        $search_result = $request->search.'の検索結果'.$posts->total().'件';
+
         return view('posts.index', [
             'posts' => $posts,
             'search_result' => $search_result,
+            'search_query'  => $request->search
         ]);
     }
 }

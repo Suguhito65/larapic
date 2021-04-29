@@ -17,8 +17,11 @@ Auth::routes();
 
 // ユーザー
 Route::resource('users', 'UserController', ['only' => 'show']);
-// 投稿
+
 Route::get('/', 'PostController@index');
+// 検索(Routeの位置が投稿の下にあると404になるので注意)
+Route::get('posts/search', 'PostController@search')->name('posts.search');
+// 投稿
 Route::resource('posts', 'PostController', ['only' => ['show', 'create', 'store']]);
 Route::prefix('posts')->name('posts.')->group(function () {
   Route::get('edit/{id}', 'PostController@edit')->name('edit');
@@ -27,8 +30,6 @@ Route::prefix('posts')->name('posts.')->group(function () {
   // いいね
   Route::get('like/{id}', 'PostController@like')->name('like');
   Route::get('unlike/{id}', 'PostController@unlike')->name('unlike');
-  // 検索
-  Route::post('search', 'PostController@search')->name('search');
 });
 // コメント
-Route::resource('comments', 'CommentController')->middleware('auth');
+Route::resource('comments', 'CommentController', ['only' => ['create', 'store']])->middleware('auth');
