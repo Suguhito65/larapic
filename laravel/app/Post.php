@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Auth; // ユーザーIDを取得するため
 class Post extends Model
 {
     protected $fillable = [
-        'user_id', 'body', 'image_url'
+        'id', 'user_id', 'body', 'image_url'
     ];
 
     public function user() {
@@ -20,7 +20,7 @@ class Post extends Model
     }
 
     public function likes() {
-        return $this->hasMany(Like::class, 'post_id');
+        return $this->hasMany('App\Like', 'post_id', 'id');
     }
 
     /**

@@ -24,15 +24,17 @@
             
             @foreach ($posts as $post)
                 <div class="card mb-5">
-                    <div class="card-header text-center bg-dark text-white">{{ $post->id }}</div>
+                    <div class="card-header text-center">
+                        <a href="{{ route('users.show', $post->user_id) }}" class="text-dark">
+                            {{ $post->user->name }}
+                        </a>
+                    </div>
                     <div class="card-body">
                         <div class="card-title">{{ $post->body }}</div>
                         <div class="text-right card-footer bg-transparent">
-                            <a href="{{ route('users.show', $post->user_id) }}" class="text-dark">
-                            <span class="font-weight-bold">by</span> {{ $post->user->name }}
-                            </a>
+                            
                         </div>
-                        <div>
+                        <div class="text-center">
                             @if($post->is_liked_by_auth_user())
                                 <a href="{{ route('posts.unlike', ['id' => $post->id]) }}" class="btn btn-primary btn-sm">いいね<span class="badge">{{ $post->likes->count() }}</span></a>
                             @else
@@ -55,7 +57,6 @@
                     </div>
                 </div>
             @endforeach
-            <!-- <like-component></like-component> -->
         </div>
     </div>
 </div>

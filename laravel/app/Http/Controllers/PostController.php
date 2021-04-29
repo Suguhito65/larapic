@@ -78,6 +78,7 @@ class PostController extends Controller
     public function show(Post $post)
     {
         $post->load('user', 'comments.user'); // コメントをしたユーザー情報を取得
+
         return view('posts.show', [
             'post' => $post,
             // ローカル
