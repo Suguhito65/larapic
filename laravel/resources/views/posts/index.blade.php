@@ -30,8 +30,15 @@
                     </a>
                 </div>
                 <div class="card-body">
-                    <div class="card-title">{{ $post->body }}</div>
-
+                    <div class="card-title">内容：{{ $post->body }}</div>
+                    <div class="card-title">
+                        タグ：
+                        @foreach ($post->tags as $tag)
+                            <a href="{{ route('posts.index', ['tag_name' => $tag->tag_name]) }}" class="text-dark">
+                                #{{ $tag->tag_name}}　
+                            </a>
+                        @endforeach
+                    </div>
                     <div class="text-center card-footer bg-transparent pt-3">
                         @if($post->is_liked_by_auth_user())
                             <a href="{{ route('posts.unlike', ['id' => $post->id]) }}" class="btn">
@@ -57,7 +64,6 @@
         @else
             {{ $posts->links() }}
         @endif
-
     </div>
 </div>
 @endsection

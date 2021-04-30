@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests\PostRequest;
 
-use App;
 use App\Post;
 use App\Like;
 use App\Tag;
@@ -25,18 +24,13 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        // $posts = Post::all();
-        // return view('posts.index', [
-        //     'posts' => $posts
-        // ]);
-        $q = \Request::query();
+        $q = $request->query();
 
         if(isset($q['tag_name'])) {
-            $posts = Post::latest()->where('body', $q['tag_name'])->paginate(1);
+            $posts = Post::latest()->where('body', 'like', '%'.$q['tag_name'].'%')->paginate(3);
             $posts->load('user', 'tags');
-            dd($posts);
 
             return view('posts.index', [
                 'posts' => $posts,
@@ -95,6 +89,7 @@ class PostController extends Controller
         }
 
         $tag_ids = [];
+
         foreach($tags as $tag) {
             array_push($tag_ids, $tag['id']);
         }

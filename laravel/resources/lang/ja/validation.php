@@ -147,7 +147,7 @@ return [
 
     'attributes' => [
         'password' => 'パスワード',
-        'body' => 'メッセージ',
+        'body' => '内容',
         'image_url' => 'イメージ',
         'comment' => 'コメント',
     ],

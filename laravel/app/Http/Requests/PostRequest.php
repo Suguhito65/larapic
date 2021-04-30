@@ -25,6 +25,7 @@ class PostRequest extends FormRequest
     {
         return [
             'body' => 'required',
+            'user_id' => 'required|numeric',
             'image_url' => 'required|file|image|mimes:jpeg,png,jpg,gif|max:2048'
         ];
     }
