@@ -58,18 +58,20 @@
                     <div class="card mb-1">
                         <div class="card-body">
                             <p class="card-text">{{ $comment->comment }}</p>
-                            <div class="text-right">
-                                <form action="{{ route('comments.destroy', ['comment' => $comment->id]) }}" method="post">
-                                    @method('DELETE')
-                                    {{ csrf_field() }}
-                                    <button type="submit" class="delete btn btn-danger btn-sm">削除</button>
-                                </form>
-                            </div>
                             <div class="text-right">  
                                 <a href="{{ route('users.show', $comment->user->id) }}" class="text-dark">
                                     <span class="font-weight-bold">by</span> {{ $comment->user->name }}
                                 </a>
                             </div>
+                            @can('edit', $comment)
+                                <div class="text-right">
+                                    <form action="{{ route('comments.destroy', ['comment' => $comment->id]) }}" method="post">
+                                        @method('DELETE')
+                                        {{ csrf_field() }}
+                                        <button type="submit" class="delete btn btn-danger btn-sm mt-3">削除</button>
+                                    </form>
+                                </div>
+                            @endcan
                         </div>
                     </div>
                 @endforeach

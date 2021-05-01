@@ -88,6 +88,7 @@ class CommentController extends Controller
     public function destroy($id)
     {
         $comment = Comment::find($id);
+        $this->authorize('edit', $comment); //認可
         $comment->delete();
 
         return redirect('posts/'. $comment->post_id);
