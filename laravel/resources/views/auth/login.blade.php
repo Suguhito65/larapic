@@ -44,7 +44,7 @@
                         </div>
                     </div -->
 
-                    <button type="submit" class="btn btn-success mt-4" style="width:100%">
+                    <button type="submit" class="btn btn-primary mt-4" style="width:100%">
                         {{ __('ログイン') }}
                     </button>
 

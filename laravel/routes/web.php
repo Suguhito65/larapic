@@ -31,4 +31,4 @@ Route::prefix('posts')->name('posts.')->group(function () {
   Route::get('unlike/{id}', 'PostController@unlike')->name('unlike');
 });
 // コメント
-Route::resource('comments', 'CommentController', ['only' => ['create', 'store']])->middleware('auth');
+Route::resource('comments', 'CommentController', ['only' => ['create', 'store', 'destroy']])->middleware('auth');

@@ -40,13 +40,14 @@
                     @endif
                 </div>
                 @can('edit', $post)
-                    <div class="mb-3">
-                        <a href="{{ url('posts/edit/'.$post->id) }}" class="btn btn-success mt-3" style="width: 100%">編集</a>
+                    <div class="row justify-content-center mt-3">
+                        <a href="{{ route('posts.edit',['id' => $post->id]) }}" class="btn btn-success mr-3">編集</a>
+                    
+                        <form action="{{ route('posts.destroy', ['id' => $post->id]) }}" method="POST">
+                            {{ csrf_field() }}
+                            <button type="submit" class="delete btn btn-danger">削除</button>
+                        </form>
                     </div>
-                    <form action="{{ route('posts.destroy', ['id' => $post->id]) }}" method="POST">
-                        {{ csrf_field() }}
-                        <button type="submit" class="delete btn btn-danger" style="width: 100%">削除</button>
-                    </form>
                 @endcan
             </div>
         </div>
@@ -57,6 +58,13 @@
                     <div class="card mb-1">
                         <div class="card-body">
                             <p class="card-text">{{ $comment->comment }}</p>
+                            <div class="text-right">
+                                <form action="{{ route('comments.destroy', ['comment' => $comment->id]) }}" method="post">
+                                    @method('DELETE')
+                                    {{ csrf_field() }}
+                                    <button type="submit" class="delete btn btn-danger btn-sm">削除</button>
+                                </form>
+                            </div>
                             <div class="text-right">  
                                 <a href="{{ route('users.show', $comment->user->id) }}" class="text-dark">
                                     <span class="font-weight-bold">by</span> {{ $comment->user->name }}
@@ -66,7 +74,7 @@
                     </div>
                 @endforeach
                 <div class="text-center mt-3">
-                    <a href="{{ route('comments.create', ['post_id' => $post->id]) }}" class="btn btn-success mb-1" style="width: 100%">
+                    <a href="{{ route('comments.create', ['post_id' => $post->id]) }}" class="btn btn-primary mb-1" style="width: 100%">
                         コメント投稿
                     </a>
                 </div>

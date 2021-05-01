@@ -179,7 +179,7 @@ class PostController extends Controller
     {
         $post = Post::find($id);
         $this->authorize('edit', $post); // 認可
-        $post->delete(); // 削除
+        $post->delete();
 
         \Session::flash('err_msg', '削除しました。');
 

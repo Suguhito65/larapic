@@ -21,7 +21,7 @@
                         @endif
                     </p>
                     <div class="text-center mt-3">
-                        <input class="btn btn-success mt-3" style="width:100%" type="submit" value="投稿する">
+                        <input class="btn btn-primary mt-3" style="width:100%" type="submit" value="投稿する">
                         <input type="hidden" name="_token" value="{{csrf_token()}}">
                     </div>
                 </div>

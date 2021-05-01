@@ -15,7 +15,7 @@
                         @endif
                     </p>
                     <div class="text-center mt-3">
-                        <input class="btn btn-success mt-3" style="width:100%" type="submit" value="コメントする">
+                        <input class="btn btn-primary mt-3" style="width:100%" type="submit" value="コメントする">
                         <input type="hidden" name="user_id" value="{{ Auth::id() }}">
                         <input type="hidden" name="post_id" value="{{ $post_id }}">
                     </div>

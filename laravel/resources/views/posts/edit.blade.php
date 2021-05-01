@@ -9,7 +9,7 @@
                 {{ csrf_field() }}
                 <div class="card-body">
                     <p class="card-text">
-                        <textarea class="form-control" name="body" id="exampleFormControlTextarea1" rows="3">{{$post->body}}</textarea>
+                        <textarea class="form-control" name="body" id="exampleFormControlTextarea1" rows="3" placeholder="#（半角）を頭につけるとタグ付けできます">{{$post->body}}</textarea>
                         @if ($errors->has('body'))
                             <div class="text-danger">{{ $errors->first('body') }}</div>
                         @endif
@@ -22,7 +22,7 @@
                     </p>
                     <div class="text-center mt-3">
                         <input name="post_id" type="hidden" value="{{$id}}" >
-                        <input class="btn btn-success mt-3" style="width:100%" type="submit" value="変更する">
+                        <input class="btn btn-primary mt-3" style="width:100%" type="submit" value="変更する">
                         <input type="hidden" name="_token" value="{{csrf_token()}}">
                     </div>
                 </div>
