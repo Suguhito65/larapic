@@ -60,3 +60,18 @@
 | id      | INT  |         |
 | post_id | INT  |         |
 | user_id | INT  |         |
+
+## Tags テーブル
+
+| Column   | Type     | Options |
+| -------- | -------- | ------- |
+| id       | INT      |         |
+| tag_name | VARCHAR  |         |
+
+## Post_tag テーブル
+
+| Column  | Type | Options |
+| ------- | ---- | ------- |
+| id      | INT  |         |
+| post_id | INT  |         |
+| tag_id  | INT  |         |

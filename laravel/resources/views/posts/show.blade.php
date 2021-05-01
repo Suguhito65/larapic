@@ -6,11 +6,21 @@
         <div class="card">
             <div class="card-header text-center bg-dark">
                 <a href="{{ route('users.show', $post->user_id) }}" class="text-white">
-                    投稿者：{{ $post->user->name }}
+                    <span class="font-weight-bold">投稿者：</span>{{ $post->user->name }}
                 </a>
             </div>
             <div class="card-body">
-                <p class="card-text">{{ $post->body }}</p>
+                <p class="card-text">
+                    <span class="font-weight-bold">内容：</span>{{ $post->body }}
+                </p>
+                <div class="card-title">
+                    <span class="font-weight-bold">タグ：</span>
+                    @foreach ($post->tags as $tag)
+                        <a href="{{ route('posts.index', ['tag_name' => $tag->tag_name]) }}" class="text-dark">
+                            #{{ $tag->tag_name}}　
+                        </a>
+                    @endforeach
+                </div>
                 <div class="card-footer bg-transparent">
                     @if ($image_url)
                         <!-- ローカル -->
