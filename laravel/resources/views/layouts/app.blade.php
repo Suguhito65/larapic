@@ -19,7 +19,7 @@
         <nav class="navbar navbar-expand-md navbar-light bg-info shadow-sm sticky-top">
             <div class="container">
                 <a class="navbar-brand text-white" href="{{ url('/') }}" style="font-size: 2em">
-                    {{ __('Larapic') }}
+                    <i class="fas fa-ruler-combined" style="font-size: 1.1em"></i>arap<i class="fas fa-info" style="font-size: 0.6em"></i>c
                 </a>
                 <button class="navbar-toggler bg-white" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>

@@ -4,8 +4,8 @@
 <div class="row">
     <div class="col-10 col-md-6 offset-1 offset-md-3">
         <div class="card">
-            <div class="card-header text-center bg-dark">
-                <a href="{{ route('users.show', $post->user_id) }}" class="text-white">
+            <div class="card-header text-center bg-secondary">
+                <a href="{{ route('users.show', $post->user_id) }}" class="text-white btn">
                     <span class="font-weight-bold">投稿者：</span>{{ $post->user->name }}
                 </a>
             </div>
@@ -16,8 +16,8 @@
                 <div class="card-title">
                     <span class="font-weight-bold">タグ：</span>
                     @foreach ($post->tags as $tag)
-                        <a href="{{ route('posts.index', ['tag_name' => $tag->tag_name]) }}" class="text-dark">
-                            #{{ $tag->tag_name}}　
+                        <a href="{{ route('posts.index', ['tag_name' => $tag->tag_name]) }}" class="text-dark btn">
+                            #{{ $tag->tag_name}}
                         </a>
                     @endforeach
                 </div>
@@ -35,7 +35,7 @@
                         </a>
                     @else
                         <a href="{{ route('posts.like', ['id' => $post->id]) }}" class="btn">
-                            <i class="far fa-heart" style="color: #f0f"></i> {{ $post->likes->count() }}
+                            <i class="far fa-heart" style="color: #ee82ee"></i> {{ $post->likes->count() }}
                         </a>
                     @endif
                 </div>
@@ -59,7 +59,7 @@
                         <div class="card-body">
                             <p class="card-text">{{ $comment->comment }}</p>
                             <div class="text-right">  
-                                <a href="{{ route('users.show', $comment->user->id) }}" class="text-dark">
+                                <a href="{{ route('users.show', $comment->user->id) }}" class="text-dark btn">
                                     <span class="font-weight-bold">by</span> {{ $comment->user->name }}
                                 </a>
                             </div>
