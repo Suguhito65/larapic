@@ -31,8 +31,8 @@
                 <div class="card-footer bg-transparent">
                     @if ($image_url)
                         <!-- ローカル -->
-                        <p class="text-center"><img class="img-fluid" src="/{{ $image_url }}"></p>
-                        <!-- <p class="text-center"><img class="img-fluid" src="https://larapic65.s3.ap-northeast-1.amazonaws.com/{{ $image_url }}"></p> -->
+                        <!-- <p class="text-center"><img class="img-fluid" src="/{{ $image_url }}"></p> -->
+                        <p class="text-center"><img class="img-fluid" src="https://larapic65.s3.ap-northeast-1.amazonaws.com/{{ $image_url }}"></p>
                     @endif
                 </div>
                 <div class="text-center">
