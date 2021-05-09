@@ -37653,7 +37653,7 @@ var render = function() {
               }
             }
           },
-          [_vm._v("いいね" + _vm._s(_vm.likeCount))]
+          [_vm._v("いいね")]
         )
       : _c(
           "button",
