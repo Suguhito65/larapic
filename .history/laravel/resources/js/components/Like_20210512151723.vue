@@ -1,0 +1,24 @@
+<template>
+   <div>
+       <button type="button" class="btn btn-primary" @click="submit(postId)">いいね</button>
+   </div>
+</template>
+<script>
+    import axios from 'axios'
+    export default {
+        props: ['postId'],
+        methods: {
+            submit(postId) {
+                let url = `/posts/${postId}/like`
+                axios
+                    .post(url)
+                    .then(response => {
+                        console.log(response)
+                    })
+                    .catch(error => {
+                        alert(error)
+                    });
+            }
+        }
+    }
+</script>
