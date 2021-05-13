@@ -6,8 +6,8 @@
         @include('layouts.error')
         <div class="card" style="background: #fafafa">
             <div class="card-header text-center bg-dark text-white" for="exampleFormControlTextarea1" style="font-size: 1.5em">新規投稿</div>
-            <form action="/posts" method="post" enctype="multipart/form-data">
-                {{ csrf_field() }}
+            <form action="/posts" method="POST" enctype="multipart/form-data">
+                @csrf
                 <div class="card-body">
                     <p class="card-text">
                         <textarea class="form-control" name="body" id="exampleFormControlTextarea1" rows="3" placeholder="#(半角)を頭につけるとタグになります。(例)ピカチュウ #ポケモン"></textarea>

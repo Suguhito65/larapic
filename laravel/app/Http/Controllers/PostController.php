@@ -130,13 +130,12 @@ class PostController extends Controller
      * @param  \App\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Post $post)
     {
-        $post = Post::findOrFail($id);
+        $post = Post::findOrFail($post->id);
         $this->authorize('edit', $post); // 認可
         return view('posts.edit', [
-            'post' => $post,
-            'id' => $id
+            'post' => $post
         ]);
     }
 
@@ -198,9 +197,9 @@ class PostController extends Controller
      * @param  \App\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Post $post)
     {
-        $post = Post::find($id);
+        $post = Post::find($post->id);
         $this->authorize('edit', $post); // 認可
         $post->delete();
 

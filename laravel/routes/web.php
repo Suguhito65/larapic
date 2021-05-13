@@ -21,11 +21,9 @@ Route::get('posts/search', 'PostController@search')->name('posts.search');
 // ユーザー
 Route::resource('users', 'UserController', ['only' => 'show']);
 // 投稿
-Route::resource('posts', 'PostController', ['only' => ['show', 'create', 'store']]);
+Route::resource('posts', 'PostController', ['except' => ['index', 'update']]);
 Route::prefix('posts')->name('posts.')->group(function () {
-  Route::get('edit/{id}', 'PostController@edit')->name('edit');
   Route::post('edit', 'PostController@update')->name('update');
-  Route::post('delete/{id}', 'PostController@destroy')->name('destroy');
   // いいね
   Route::get('like/{id}', 'PostController@like')->name('like');
   Route::get('unlike/{id}', 'PostController@unlike')->name('unlike');

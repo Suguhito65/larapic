@@ -44,9 +44,10 @@
                 </div>
                 @can('edit', $post)
                     <div class="row justify-content-around mt-3">
-                        <a href="{{ route('posts.edit',['id' => $post->id]) }}" class="btn btn-success px-4" style="border-radius: 1.2em">編集</a>
-                        <form action="{{ route('posts.destroy', ['id' => $post->id]) }}" method="POST">
-                            {{ csrf_field() }}
+                        <a href="{{ route('posts.edit',['post' => $post->id]) }}" class="btn btn-success px-4" style="border-radius: 1.2em">編集</a>
+                        <form action="{{ route('posts.destroy', ['post' => $post->id]) }}" method="POST">
+                            @csrf
+                            @method('DELETE')
                             <button type="submit" class="delete btn btn-danger px-4" style="border-radius: 1.2em">削除</button>
                         </form>
                     </div>
@@ -64,9 +65,9 @@
                             </div>
                             @can('edit', $comment)
                                 <div class="text-right">
-                                    <form action="{{ route('comments.destroy', ['comment' => $comment->id]) }}" method="post">
+                                    <form action="{{ route('comments.destroy', ['comment' => $comment->id]) }}" method="POST">
                                         @method('DELETE')
-                                        {{ csrf_field() }}
+                                        @csrf
                                         <button type="submit" class="delete btn btn-sm">
                                             <i class="fas fa-trash-alt text-danger"></i>
                                         </button>

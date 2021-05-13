@@ -6,8 +6,8 @@
         @include('layouts.error')
         <div class="card" style="background: #fafafa">
             <div class="card-header text-center bg-dark text-white" for="exampleFormControlTextarea1" style="font-size: 1.5em">コメント投稿</div>
-            <form action="{{ route('comments.store') }}" method="post">
-                {{ csrf_field() }}
+            <form action="{{ route('comments.store') }}" method="POST">
+                @csrf
                 <div class="card-body">
                     <p class="card-text">
                         <textarea class="form-control" name="comment" id="comment" rows="5" placeholder="他の人が不快に思うコメントは控えて下さい。"></textarea>
