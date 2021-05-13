@@ -10,9 +10,10 @@ class LikeController extends Controller
 {
     public function like(Post $post, Request $request)
     {
+        dd($request)
         $like = Like::create([
-            'user_id' => $request->user_id,
-            'post_id' => $post->id
+            'post_id' => $post->id,
+            'user_id' => $request->user_id
         ]);
         $likeCount = count(Like::where('post_id', $post->id)->get());
 
